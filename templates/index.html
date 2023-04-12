@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>LawBot</title>
+  </head>
+  <body>
+  <div style="display: flex; justify-content: center;">
+    <h1>LawBot</h1>
+	  </div>
+	  <div style="display: flex; justify-content: center;">
+    <form method="POST">
+      <label dir="rtl" for="query">اكتب سؤالك (بأي لغة تريد):</label>
+	  <br>
+      <input type="text" id="query" name="query">
+      <input type="submit" value="Ask">
+    </form>
+	</div>
+    {% if result %}
+	<div style="display: flex; justify-content: center;">
+      <h2 dir="rtl">الجواب:</h2>
+	  </div>
+	  <div style="display: flex; justify-content: center;">
+      <p>{{ result }}</p>
+	  </div>
+    {% endif %}
+  </body>
+</html>
