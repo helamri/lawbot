@@ -56,19 +56,53 @@
         border-radius: 5px;
         box-shadow: 2px 2px #ccc;
       }
+      #loader {
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+      }
+      footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px;
+        font-size: 1.2em;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+      footer a {
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
     <h1>LawBot</h1>
     <form method="POST">
       <h2>Ask a question:</h2>
-      <input type="text" id="query" name="query">
+      <input type="text" id="query" name="query" oninput="resizeInput()">
       <br>
-      <input type="submit" value="Ask">
+      <input type="submit" value="Ask" onclick="showLoader()">
     </form>
+    <div id="loader" style="display:none;">
+      <img src="https://thumbs.gfycat.com/UncommonCrazyAfricanaugurbuzzard-max-1mb.gif" alt="Loading...">
+    </div>
+
     {% if result %}
-    <h2>Answer:</h2>
+    <h2>Answer (based on Moroccan laws):</h2>
     <p>{{ result }}</p>
     {% endif %}
+    <footer>
+      Made with ❤️ by <a target="_blank" href="https://www.helamri.net/">helamri</a>
+    </footer>
+
+    <script>
+      function showLoader() {
+        document.getElementById("loader").style.display = "block";
+      }
+
+      function resizeInput() {
+        document.getElementById("query").style.width = ((document.getElementById("query").value.length + 1) * 10) + 'px';
+      }
+    </script>
   </body>
 </html>
