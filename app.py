@@ -9,12 +9,16 @@ from langchain.prompts.chat import (
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
 )
+import os
 
 app = Flask(__name__)
 
-embeddings = OpenAIEmbeddings(openai_api_key="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")
+openai_api_key = os.environ.get("OPENAI_API_KEY", "default_key")
+pinecone_api_key = os.environ.get("PINECONE_API_KEY", "default_key")
+
+embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
 pinecone.init(
-    api_key="04a90dac-d0f2-4690-87dc-2c4b8ed216c5",
+    api_key=pinecone_api_key,
     environment="us-east1-gcp"
 )
 index_name = "laws"
