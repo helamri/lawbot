@@ -24,7 +24,7 @@ pinecone.init(
 index_name = "laws"
 docsearch = Pinecone.from_existing_index(index_name=index_name, embedding=embeddings)
 
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.3, openai_api_key="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", max_tokens=1900)
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.3, openai_api_key=openai_api_key, max_tokens=1900)
 
 template = "You are a helpful Moroccan laws expert, Answer the questions in detail in the language the question was asked. {documents}"
 system_message_prompt = SystemMessagePromptTemplate.from_template(template)
